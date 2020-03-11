@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de processo</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>Cadastro de processo</h1>
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputText value="Número: *" />
+			<h:inputText value="#{processoController.processo.numero}"
+				required="true"
+				requiredMessage="O campo número é obrigatório!" />
+			<h:outputText value="Valor: *" />
+			<h:inputText value="#{processoController.processo.valor}"
+				required="true"
+				requiredMessage="O campo valor é obrigatório!" />
+			<h:outputText value="Quantidade: *" />
+			<h:inputText value="#{processoController.processo.quatidade}"
+			 required="true"
+			 requiredMessage="O campo quantidade é obrigatório!" />
+			 <h:outputText value="Assunto: *" />
+			 <h:selectOneMenu value="#{processoController.assuntoSelecionado}"
+			 	converter="assuntoConverter"
+			 	required="true"
+			 	requiredMessage="O campo assunto é obrigatório!">
+			 	<f:selectItem itemLabel="SELECIONE" />
+			 	<f:selectItems 
+			 		value="#{assuntoController.lista}" 
+			 		var="assunto"
+			 		itemLabel="#{assunto.descricao}"
+			 		itemValue="#{assunto}" />
+			 </h:selectOneMenu>
+			 <h:commandButton value="Salvar" action="#{processoController.salvar}" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
